@@ -11,24 +11,26 @@ function Clients() {
 
   return (
     <>
-      <h2>Clients</h2>
-      {!loading && !error && (
-        <table className='table align-middle table table-hover mt-3'>
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Email</th>
-              <th>Phone</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            {data.clients.map((client) => (
-              <ClientRow key={client.id} client={client} />
-            ))}
-          </tbody>
-        </table>
-      )}
+      <div className='row mt-4 bg-light p-2 rounded'>
+        <h2 className='p-1'>Clients</h2>
+        {!loading && !error && (
+          <table className='table align-middle table table-hover mt-3'>
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              {data.clients.map((client) => (
+                <ClientRow key={client.id} client={client} />
+              ))}
+            </tbody>
+          </table>
+        )}
+      </div>
     </>
   );
 }

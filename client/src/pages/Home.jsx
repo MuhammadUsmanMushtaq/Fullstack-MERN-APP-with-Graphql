@@ -6,12 +6,11 @@ import Clients from '../components/Clients';
 function Home() {
   return (
     <>
-      <div className='d-flex mt-4 mb-4 gap-3'>
+      <div className='d-flex mt-4 mb-4 gap-3 justify-content-center'>
         <AddClientModal />
         <AddProjectModal />
       </div>
       <Projects />
-      <hr />
       <Clients />
     </>
   );

@@ -18,11 +18,13 @@ function Project() {
   return (
     <>
       {!loading && !error && (
-        <div className='mx-auto w-75 card p-5 mt-4'>
-          <Link to='/' className='btn btn-light btn-sm w-25 d-inline ms-auto'>
-            Back
-          </Link>
-          <h1>{data.project.name}</h1>
+        <div className='mx-auto w-75 card p-4 mt-4'>
+          <div className='d-flex justify-content-between align-items-center'>
+            <h1>{data.project.name}</h1>
+            <Link to='/' className='btn btn-dark btn-sm w-25'>
+              Back
+            </Link>
+          </div>
           <p>{data.project.description}</p>
           <h5 className='mt-3'>Project Status</h5>
           <p className='lead'>{data.project.status}</p>

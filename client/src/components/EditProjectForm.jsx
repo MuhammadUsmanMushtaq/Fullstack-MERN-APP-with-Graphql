@@ -74,7 +74,7 @@ function EditProjectForm({ project }) {
           </select>
         </div>
         <button type='submit' className='btn btn-primary'>
-          Update
+          Update Project
         </button>
       </form>
     </div>
