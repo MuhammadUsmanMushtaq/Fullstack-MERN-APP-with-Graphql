@@ -1,6 +1,3 @@
-// const { projects, clients } = require('../Data');
-
-//Mangoose Models
 const Project = require('../models/Project');
 const Client = require('../models/Client');
 
@@ -14,7 +11,7 @@ const {
   GraphQLEnumType,
 } = require('graphql');
 
-//Project Type
+// Project Type
 const ProjectType = new GraphQLObjectType({
   name: 'Project',
   fields: () => ({
@@ -31,7 +28,7 @@ const ProjectType = new GraphQLObjectType({
   }),
 });
 
-//Client Type
+// Client Type
 const ClientType = new GraphQLObjectType({
   name: 'Client',
   fields: () => ({
@@ -74,12 +71,11 @@ const RootQuery = new GraphQLObjectType({
   },
 });
 
-//Mutations
-
+// Mutations
 const mutation = new GraphQLObjectType({
   name: 'Mutation',
   fields: {
-    //Add client
+    // Add a client
     addClient: {
       type: ClientType,
       args: {
@@ -93,22 +89,27 @@ const mutation = new GraphQLObjectType({
           email: args.email,
           phone: args.phone,
         });
+
         return client.save();
       },
     },
-    //Delete client
+    // Delete a client
     deleteClient: {
       type: ClientType,
       args: {
         id: { type: GraphQLNonNull(GraphQLID) },
       },
       resolve(parent, args) {
+        Project.find({ clientId: args.id }).then((projects) => {
+          projects.forEach((project) => {
+            project.deleteOne();
+          });
+        });
+
         return Client.findByIdAndRemove(args.id);
       },
     },
-
-    //Add a Project
-
+    // Add a project
     addProject: {
       type: ProjectType,
       args: {
@@ -134,10 +135,11 @@ const mutation = new GraphQLObjectType({
           status: args.status,
           clientId: args.clientId,
         });
+
         return project.save();
       },
     },
-    //Delete a project
+    // Delete a project
     deleteProject: {
       type: ProjectType,
       args: {
@@ -147,7 +149,7 @@ const mutation = new GraphQLObjectType({
         return Project.findByIdAndRemove(args.id);
       },
     },
-    //Update a project
+    // Update a project
     updateProject: {
       type: ProjectType,
       args: {
