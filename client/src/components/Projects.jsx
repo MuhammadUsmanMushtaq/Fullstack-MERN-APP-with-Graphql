@@ -13,6 +13,7 @@ function Projects() {
     <>
       {data.projects.length > 0 ? (
         <div className='row mt-4'>
+          <h2> Projects</h2>
           {data.projects.map((project) => (
             <ProjectCard key={project.id} project={project} />
           ))}

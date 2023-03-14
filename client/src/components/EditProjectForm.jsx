@@ -6,19 +6,18 @@ import { UPDATE_PROJECT } from '../mutations/projectMutations';
 function EditProjectForm({ project }) {
   const [name, setName] = useState(project.name);
   const [description, setDescription] = useState(project.description);
-  const [status, setStatus] = useState('');
-  // const [status, setStatus] = useState(() => {
-  //   switch (project.status) {
-  //     case 'Not Started':
-  //       return 'new';
-  //     case 'In Progress':
-  //       return 'progress';
-  //     case 'Completed':
-  //       return 'completed';
-  //     default:
-  //       throw new Error(`Unknown status: ${project.status}`);
-  //   }
-  // });
+  const [status, setStatus] = useState(() => {
+    switch (project.status) {
+      case 'Not Started':
+        return 'new';
+      case 'In Progress':
+        return 'progress';
+      case 'Completed':
+        return 'completed';
+      default:
+        throw new Error(`Unknown status: ${project.status}`);
+    }
+  });
 
   const [updateProject] = useMutation(UPDATE_PROJECT, {
     variables: { id: project.id, name, description, status },
@@ -30,7 +29,7 @@ function EditProjectForm({ project }) {
   const statuslHandleChange = (e) => setStatus(e.target.value);
 
   const handleSubmit = (e) => {
-    e.preventDeafault();
+    e.preventDefault();
 
     if (!name || !description || !status) {
       return alert('Please fill out all fields');

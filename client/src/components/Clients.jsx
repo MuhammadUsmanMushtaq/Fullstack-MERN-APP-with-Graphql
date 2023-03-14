@@ -11,6 +11,7 @@ function Clients() {
 
   return (
     <>
+      <h2>Clients</h2>
       {!loading && !error && (
         <table className='table align-middle table table-hover mt-3'>
           <thead>
