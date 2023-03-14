@@ -20,11 +20,11 @@ function AddClientModal() {
     },
   });
 
-  const nameHandleChane = (e) => setName(e.target.value);
+  const nameHandleChange = (e) => setName(e.target.value);
 
-  const emailHandleChane = (e) => setEmail(e.target.value);
+  const emailHandleChange = (e) => setEmail(e.target.value);
 
-  const phoneHandleChane = (e) => setPhone(e.target.value);
+  const phoneHandleChange = (e) => setPhone(e.target.value);
 
   const onFormSubmit = (e) => {
     e.preventDefault();
@@ -79,7 +79,7 @@ function AddClientModal() {
                     className='form-control'
                     id='name'
                     value={name}
-                    onChange={nameHandleChane}
+                    onChange={nameHandleChange}
                   />
                 </div>
                 <div className='mb-3'>
@@ -89,7 +89,7 @@ function AddClientModal() {
                     className='form-control'
                     id='email'
                     value={email}
-                    onChange={emailHandleChane}
+                    onChange={emailHandleChange}
                   />
                 </div>
                 <div className='mb-3'>
@@ -99,7 +99,7 @@ function AddClientModal() {
                     className='form-control'
                     id='phone'
                     value={phone}
-                    onChange={phoneHandleChane}
+                    onChange={phoneHandleChange}
                   />
                 </div>
                 <button
